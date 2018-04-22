@@ -1,16 +1,42 @@
 {
   "name": "semantic-release-chrome",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "main": "dist/index.js",
-  "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
+  "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://www.gabrielduarte.tech/)",
   "license": "MIT",
+  "description": "Set of semantic-release plugins for publishing a Chrome extension release",
+  "homepage": "https://github.com/GabrielDuarteM/semantic-release-chrome",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GabrielDuarteM/semantic-release-chrome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GabrielDuarteM/semantic-release-chrome/issues"
+  },
+  "engines": {
+    "node": ">=8.3"
+  },
+  "keywords": [
+    "semantic-release",
+    "plugin",
+    "chrome",
+    "webstore",
+    "extension",
+    "publish",
+    "version"
+  ],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "yarn build -w",
     "prebuild": "rimraf dist",
     "build": "babel src --extensions \".ts\" --out-dir dist",
+    "postbuild": "rimraf dist/@types",
     "type-check": "tsc",
     "lint": "tslint -p tsconfig.json",
-    "ci": "yarn type-check && yarn lint && yarn build"
+    "ci": "yarn type-check && yarn lint && yarn build",
+    "release": "semantic-release"
   },
   "resolutions": {
     "babel-core": "^7.0.0-bridge.0"
@@ -26,6 +52,7 @@
     "@types/node": "^9.6.6",
     "prettier": "^1.12.1",
     "rimraf": "^2.6.2",
+    "semantic-release": "^15.1.7",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.12.0",
     "tslint-plugin-prettier": "^1.3.0",
