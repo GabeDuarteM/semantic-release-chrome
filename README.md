@@ -20,9 +20,9 @@ Write the correct version to the `manifest.json` and creates a zip file of the w
 
 asset: **REQUIRED** parameter. The filename of the final zip file.
 
-distFolder: The folder that will be zipped. Defaults to `dist`
+distFolder: The folder that will be zipped. Defaults to `dist`.
 
-manifestPath: The path of the manifest inside the dist folder. Defaults to `<distFolder parameter>/manifest.json`
+manifestPath: The path of the manifest inside the dist folder. Defaults to `<distFolder parameter>/manifest.json`.
 
 ## publish
 
@@ -34,7 +34,7 @@ extensionId: **REQUIRED** parameter. The extension id from the webstore. For exa
 
 asset: **REQUIRED** parameter. The zip file that will be published to the chrome webstore.
 
-target: can be `default` or `trustedTesters`. When released using the first, the extension will be publicly available to everyone. when `trustedTesters` is used, it will be released as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`
+target: can be `default` or `trustedTesters`. When released using the first, the extension will be publicly available to everyone. when `trustedTesters` is used, it will be released as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`.
 
 ## Configuration
 
@@ -50,7 +50,7 @@ The following environment variables has to be made available in your CI environm
 
 Use `semantic-release-chrome` as part of `verifyConditions`, `prepare` and `publish`.
 
-A basic config file example is available below
+A basic config file example is available below:
 
 ```json
 {
@@ -79,6 +79,6 @@ A basic config file example is available below
 }
 ```
 
-For more info about each config, see the parameters for each [plugin](#-plugins).
+For more info about each config, see the parameters for each [plugin](#plugins).
 
 It is recommended to upload this to your GitHub release page so your users can easily rollback to an earlier version if a version ever introduces a bad bug.
