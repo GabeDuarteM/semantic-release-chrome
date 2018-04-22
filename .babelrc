@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "node": "8.11.1"
+        },
+        "useBuiltIns": false
+      }
+    ],
+    "@babel/preset-typescript"
+  ]
+}
