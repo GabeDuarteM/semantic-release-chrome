@@ -4,4 +4,5 @@ node_js:
 script:
   - yarn ci
 after_success:
-  - npx travis-deploy-once "npm run release"
+  - yarn global add travis-deploy-once
+  - travis-deploy-once "npm run release"
