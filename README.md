@@ -1,5 +1,9 @@
 # semantic-release-chrome
 
+[![travis](https://img.shields.io/travis/GabrielDuarteM/semantic-release-chrome/master.svg)](https://travis-ci.org/GabrielDuarteM/semantic-release-chrome)
+[![npm version](https://img.shields.io/npm/v/semantic-release-chrome.svg)](https://www.npmjs.com/package/semantic-release-chrome)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 A [`semantic-release`](https://github.com/semantic-release/semantic-release) plugin for you to be able to easily publish Chrome Extensions using it's automated release.
 
 ## Plugins
