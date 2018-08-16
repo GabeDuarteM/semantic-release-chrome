@@ -1,12 +1,12 @@
-interface IContext {
+interface Context {
   options?: {}
   nextRelease: { version: string }
-  logger: ILogger
+  logger: Logger
 }
 
-export interface ILogger {
+export interface Logger {
   log: (...args: any[]) => void
   error: (...args: any[]) => void
 }
 
-export default IContext
+export default Context

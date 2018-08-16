@@ -1,14 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "noEmit": true,
-    "pretty": true,
-    "skipLibCheck": true,
-    "sourceMap": true
-  },
-  "exclude": ["node_modules", "**/node_modules/*"]
+  "extends": "./node_modules/gd-scripts/build/config/tsconfig.json"
 }

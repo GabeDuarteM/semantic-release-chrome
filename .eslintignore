@@ -1,0 +1,3 @@
+build/
+node_modules/
+/src/@types/semantic-release-error/index.d.ts

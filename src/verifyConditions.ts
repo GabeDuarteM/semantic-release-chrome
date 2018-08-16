@@ -1,8 +1,7 @@
 import SemanticReleaseError from "@semantic-release/error"
 import AggregateError from "aggregate-error"
 
-import IContext from "./@types/context"
-import IPluginConfig from "./@types/pluginConfig"
+const configMessage = "Check the README.md for config info."
 
 const createErrorPATH = (param: string, code: string) =>
   new SemanticReleaseError(
@@ -10,12 +9,7 @@ const createErrorPATH = (param: string, code: string) =>
     code,
   )
 
-const configMessage = "Check the README.md for config info."
-
-const verifyConditions = (
-  pluginConfig: IPluginConfig,
-  { logger }: IContext,
-) => {
+const verifyConditions = () => {
   const {
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,

@@ -1,4 +1,4 @@
-interface IPluginConfig {
+interface PluginConfig {
   manifestPath: string
   distFolder: string
   asset: string
@@ -6,4 +6,4 @@ interface IPluginConfig {
   target: "default" | "trustedTesters"
 }
 
-export default IPluginConfig
+export default PluginConfig

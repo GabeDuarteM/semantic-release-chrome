@@ -3,9 +3,9 @@ import AggregateError from "aggregate-error"
 import cwu from "chrome-webstore-upload"
 import { createReadStream } from "fs-extra"
 
-import IPluginConfig from "./@types/pluginConfig"
+import PluginConfig from "./@types/pluginConfig"
 
-const publish = async ({ extensionId, target, asset }: IPluginConfig) => {
+const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,

@@ -1,1 +1,0 @@
-module "chrome-webstore-upload"

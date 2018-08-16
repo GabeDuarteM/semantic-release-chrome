@@ -5,12 +5,44 @@ import { readJsonSync, writeJsonSync } from "fs-extra"
 import { createWriteStream } from "fs"
 import { resolve } from "path"
 
-import IContext, { ILogger } from "./@types/context"
-import IPluginConfig from "./@types/pluginConfig"
+import Context, { Logger } from "./@types/context"
+import PluginConfig from "./@types/pluginConfig"
 
-const prepare = async (
-  { manifestPath, distFolder, asset }: IPluginConfig,
-  { nextRelease, logger }: IContext,
+const prepareManifest = (
+  manifestPath: string,
+  version: string,
+  logger: Logger,
+) => {
+  const manifest = readJsonSync(manifestPath)
+
+  writeJsonSync(manifestPath, { ...manifest, version }, { spaces: 2 })
+
+  logger.log("Wrote version %s to %s", version, manifestPath)
+}
+
+const zipFolder = (
+  asset: string,
+  distFolder: string,
+  version: string,
+  logger: Logger,
+) => {
+  const zipPath = resolve(asset)
+  const output = createWriteStream(zipPath)
+  const archive = archiver("zip", {
+    zlib: { level: 9 },
+  })
+
+  archive.pipe(output)
+
+  archive.directory(distFolder, false)
+  archive.finalize()
+
+  logger.log("Wrote zipped file to %s", zipPath)
+}
+
+const prepare = (
+  { manifestPath, distFolder, asset }: PluginConfig,
+  { nextRelease, logger }: Context,
 ) => {
   if (!asset) {
     throw new SemanticReleaseError(
@@ -28,39 +60,7 @@ const prepare = async (
     version,
     logger,
   )
-  await zipFolder(asset, normalizedDistFolder, version, logger)
-}
-
-const prepareManifest = (
-  manifestPath: string,
-  version: string,
-  logger: ILogger,
-) => {
-  const manifest = readJsonSync(manifestPath)
-
-  writeJsonSync(manifestPath, { ...manifest, version }, { spaces: 2 })
-
-  logger.log("Wrote version %s to %s", version, manifestPath)
-}
-
-const zipFolder = async (
-  asset: string,
-  distFolder: string,
-  version: string,
-  logger: ILogger,
-) => {
-  const zipPath = resolve(asset)
-  const output = createWriteStream(zipPath)
-  const archive = archiver("zip", {
-    zlib: { level: 9 },
-  })
-
-  archive.pipe(output)
-
-  archive.directory(distFolder, false)
-  archive.finalize()
-
-  logger.log("Wrote zipped file to %s", zipPath)
+  zipFolder(asset, normalizedDistFolder, version, logger)
 }
 
 export default prepare
