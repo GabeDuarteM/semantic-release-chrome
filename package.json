@@ -56,6 +56,6 @@
     "aggregate-error": "^1.0.0",
     "archiver": "^2.1.1",
     "chrome-webstore-upload": "^0.2.2",
-    "fs-extra": "^5.0.0"
+    "fs-extra": "^7.0.0"
   }
 }
