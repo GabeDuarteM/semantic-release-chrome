@@ -42,14 +42,14 @@
   "devDependencies": {
     "@types/adm-zip": "^0.4.31",
     "@types/aggregate-error": "^1.0.0",
-    "@types/archiver": "^2.1.1",
-    "@types/fs-extra": "^5.0.2",
-    "@types/node": "^9.6.6",
+    "@types/archiver": "^2.1.2",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.7.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^2.6.2",
     "gd-scripts": "^1.2.0",
-    "prettier": "^1.12.1",
-    "semantic-release": "^15.1.7"
+    "prettier": "^1.14.2",
+    "semantic-release": "^15.9.8"
   },
   "dependencies": {
     "@semantic-release/error": "^2.2.0",
