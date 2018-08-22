@@ -62,6 +62,11 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
     }
     throw new AggregateError(errors)
   }
+
+  return {
+    name: "Chrome Web Store",
+    url: `https://chrome.google.com/webstore/detail/${extensionId}`,
+  }
 }
 
 export default publish
