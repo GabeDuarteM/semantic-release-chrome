@@ -1,0 +1,9 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "packageNames": ["@types/node"],
+      "automerge": "true"
+    }
+  ]
+}
