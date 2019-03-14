@@ -2,7 +2,7 @@
 
 [chrome-webstore-upload](https://github.com/DrewML/chrome-webstore-upload) uses the Chrome Web Store API.
 
-Here's how to get its 3 access keys: `clientId`, `clientSecret`, `refreshToken`
+Here's how to get its 3 access keys: `clientId`, `clientSecret`, `refreshToken`, and set the `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REFRESH_TOKEN` environment variables for this `semantic-release` plugin.
 
 _Note:_ the names you enter here don't really matter.
 
@@ -30,7 +30,8 @@ _Note:_ the names you enter here don't really matter.
 
     > <img width="187" alt="client type id" src="https://cloud.githubusercontent.com/assets/1402241/21517952/d1f36fce-cc97-11e6-92c0-de4485d97736.png">
 
-1.  Save your ✅ `clientId` and ✅ `clientSecret`, these are your keys.
+1.  Save your ✅ `clientId` and ✅ `clientSecret`, these are your keys. Use these keys to set your ✅ `GOOGLE_CLIENT_ID` and ✅ `GOOGLE_CLIENT_SECRET` environment variables, respectively. 
+
 1.  Place your `clientId` in this URL and open it:
 
     [https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob](https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob)
@@ -41,22 +42,21 @@ _Note:_ the names you enter here don't really matter.
 
 1.  Run this in your browser console.  
     It's a wizard to create and copy a `curl` into your clipboard:
-
-```js
-var clientId = "YOUR CLIENTID HERE"
-var clientSecret = "YOUR CLIENTSECRET HERE"
-var authcode = "YOUR AUTHCODE HERE"
-copy(
-  `curl "https://accounts.google.com/o/oauth2/token" -d "client_id=${encodeURIComponent(
-    clientId,
-  )}&client_secret=${encodeURIComponent(
-    clientSecret,
-  )}&code=${encodeURIComponent(
-    authcode,
-  )}&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob"`,
-)
-console.log("The curl has been copied. Paste it into your terminal.")
-```
+    ```js
+    var clientId = "YOUR CLIENTID HERE"
+    var clientSecret = "YOUR CLIENTSECRET HERE"
+    var authcode = "YOUR AUTHCODE HERE"
+    copy(
+      `curl "https://accounts.google.com/o/oauth2/token" -d "client_id=${encodeURIComponent(
+        clientId,
+      )}&client_secret=${encodeURIComponent(
+        clientSecret,
+      )}&code=${encodeURIComponent(
+        authcode,
+      )}&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob"`,
+    )
+    console.log("The curl has been copied. Paste it into your terminal.")
+    ```
 
 1.  Paste the generated code in your terminal and run it. If your terminal doesn't have `curl`, try using `git bash`, [online curl](https://onlinecurl.com/), or [manually install curl](https://curl.haxx.se/dlwiz/).
 
@@ -64,4 +64,6 @@ console.log("The curl has been copied. Paste it into your terminal.")
 
     <img width="400" alt="access token" src="https://cloud.githubusercontent.com/assets/1402241/21518331/9b7e3b42-cc9a-11e6-8d65-cde5ba5ea105.png">
 
-1.  Done. Now you should have ✅ `clientId`, ✅ `clientSecret` and ✅ `refreshToken`. You can use these for all your extensions, but don't share them!
+1. Use the value of `refresh_token` in the above JSON Object to set the ✅ `GOOGLE_REFRESH_TOKEN` environment variable.
+
+1.  Done. Now you should have ✅ `clientId`, ✅ `clientSecret` and ✅ `refreshToken`, and the ✅ `GOOGLE_CLIENT_ID`, ✅ `GOOGLE_CLIENT_SECRET`, and ✅ `GOOGLE_REFRESH_TOKEN` environment variables. You can use these for all your extensions, but don't share them!
