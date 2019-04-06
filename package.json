@@ -49,7 +49,7 @@
     "eslint-plugin-prettier": "2.6.2",
     "gd-scripts": "1.2.0",
     "prettier": "1.14.2",
-    "semantic-release": "15.9.8"
+    "semantic-release": "15.13.3"
   },
   "dependencies": {
     "@semantic-release/error": "^2.2.0",
