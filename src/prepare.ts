@@ -1,12 +1,12 @@
-import SemanticReleaseError from "@semantic-release/error"
-import archiver from "archiver"
-import { readJsonSync, writeJsonSync } from "fs-extra"
+import SemanticReleaseError from '@semantic-release/error'
+import archiver from 'archiver'
+import { readJsonSync, writeJsonSync } from 'fs-extra'
 
-import { createWriteStream } from "fs"
-import { resolve } from "path"
+import { createWriteStream } from 'fs'
+import { resolve } from 'path'
 
-import Context, { Logger } from "./@types/context"
-import PluginConfig from "./@types/pluginConfig"
+import Context, { Logger } from './@types/context'
+import PluginConfig from './@types/pluginConfig'
 
 const prepareManifest = (
   manifestPath: string,
@@ -17,7 +17,7 @@ const prepareManifest = (
 
   writeJsonSync(manifestPath, { ...manifest, version }, { spaces: 2 })
 
-  logger.log("Wrote version %s to %s", version, manifestPath)
+  logger.log('Wrote version %s to %s', version, manifestPath)
 }
 
 const zipFolder = (
@@ -28,7 +28,7 @@ const zipFolder = (
 ) => {
   const zipPath = resolve(asset)
   const output = createWriteStream(zipPath)
-  const archive = archiver("zip", {
+  const archive = archiver('zip', {
     zlib: { level: 9 },
   })
 
@@ -37,7 +37,7 @@ const zipFolder = (
   archive.directory(distFolder, false)
   archive.finalize()
 
-  logger.log("Wrote zipped file to %s", zipPath)
+  logger.log('Wrote zipped file to %s', zipPath)
 }
 
 const prepare = (
@@ -47,13 +47,13 @@ const prepare = (
   if (!asset) {
     throw new SemanticReleaseError(
       "Option 'asset' was not included in the prepare config. Check the README.md for config info.",
-      "ENOASSET",
+      'ENOASSET',
     )
   }
 
   const version = nextRelease.version
 
-  const normalizedDistFolder = distFolder || "dist"
+  const normalizedDistFolder = distFolder || 'dist'
 
   prepareManifest(
     manifestPath || `${normalizedDistFolder}/manifest.json`,

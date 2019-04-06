@@ -1,7 +1,7 @@
-import SemanticReleaseError from "@semantic-release/error"
-import AggregateError from "aggregate-error"
+import SemanticReleaseError from '@semantic-release/error'
+import AggregateError from 'aggregate-error'
 
-const configMessage = "Check the README.md for config info."
+const configMessage = 'Check the README.md for config info.'
 
 const createErrorPATH = (param: string, code: string) =>
   new SemanticReleaseError(
@@ -18,15 +18,15 @@ const verifyConditions = () => {
   const errors: Error[] = []
 
   if (!GOOGLE_CLIENT_ID) {
-    errors.push(createErrorPATH("GOOGLE_CLIENT_ID", "EGOOGLECLIENTID"))
+    errors.push(createErrorPATH('GOOGLE_CLIENT_ID', 'EGOOGLECLIENTID'))
   }
 
   if (!GOOGLE_CLIENT_SECRET) {
-    errors.push(createErrorPATH("GOOGLE_CLIENT_SECRET", "EGOOGLECLIENTSECRET"))
+    errors.push(createErrorPATH('GOOGLE_CLIENT_SECRET', 'EGOOGLECLIENTSECRET'))
   }
 
   if (!GOOGLE_REFRESH_TOKEN) {
-    errors.push(createErrorPATH("GOOGLE_REFRESH_TOKEN", "EGOOGLEREFRESHTOKEN"))
+    errors.push(createErrorPATH('GOOGLE_REFRESH_TOKEN', 'EGOOGLEREFRESHTOKEN'))
   }
 
   if (errors.length > 0) {

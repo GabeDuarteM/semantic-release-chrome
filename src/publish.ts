@@ -1,9 +1,9 @@
-import SemanticReleaseError from "@semantic-release/error"
-import AggregateError from "aggregate-error"
-import cwu from "chrome-webstore-upload"
-import { createReadStream } from "fs-extra"
+import SemanticReleaseError from '@semantic-release/error'
+import AggregateError from 'aggregate-error'
+import cwu from 'chrome-webstore-upload'
+import { createReadStream } from 'fs-extra'
 
-import PluginConfig from "./@types/pluginConfig"
+import PluginConfig from './@types/pluginConfig'
 
 const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   const {
@@ -15,14 +15,14 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   if (!extensionId) {
     throw new SemanticReleaseError(
       "Option 'extensionId' was not included in the publish config. Check the README.md for config info.",
-      "ENOEXTENSIONID",
+      'ENOEXTENSIONID',
     )
   }
 
   if (!asset) {
     throw new SemanticReleaseError(
       "Option 'asset' was not included in the publish config. Check the README.md for config info.",
-      "ENOASSET",
+      'ENOASSET',
     )
   }
 
@@ -38,7 +38,7 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   const zipFile = createReadStream(asset)
   const uploadRes = await webStore.uploadExisting(zipFile, token)
 
-  if (uploadRes.uploadState === "FAILURE") {
+  if (uploadRes.uploadState === 'FAILURE') {
     const errors: SemanticReleaseError[] = []
     uploadRes.itemError.forEach((err: any) => {
       const semanticError = new SemanticReleaseError(
@@ -50,9 +50,9 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
     throw new AggregateError(errors)
   }
 
-  const publishRes = await webStore.publish(target || "default", token)
+  const publishRes = await webStore.publish(target || 'default', token)
 
-  if (!publishRes.status.includes("OK")) {
+  if (!publishRes.status.includes('OK')) {
     const errors: SemanticReleaseError[] = []
     for (let i = 0; i < publishRes.status.length; i += 1) {
       const message = publishRes.statusList[i]
@@ -64,7 +64,7 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   }
 
   return {
-    name: "Chrome Web Store",
+    name: 'Chrome Web Store',
     url: `https://chrome.google.com/webstore/detail/${extensionId}`,
   }
 }

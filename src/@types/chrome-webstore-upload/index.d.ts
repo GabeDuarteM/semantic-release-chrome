@@ -1,1 +1,1 @@
-declare module "chrome-webstore-upload"
+declare module 'chrome-webstore-upload'

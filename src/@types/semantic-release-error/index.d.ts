@@ -1,5 +1,9 @@
-declare module "@semantic-release/error" {
-  export default class SemanticReleaseError extends Error {
-    constructor(message: string, code: string, details?: string)
+declare module '@semantic-release/error' {
+  class SemanticReleaseError extends Error {
+    public code?: string
+    public details?: string
+    constructor(message?: string, code?: string, details?: string)
   }
+
+  export = SemanticReleaseError
 }

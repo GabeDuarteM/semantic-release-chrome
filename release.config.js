@@ -1,1 +1,1 @@
-module.exports = require("gd-scripts/semver")
+module.exports = require('gd-scripts/semver')
