@@ -702,17 +702,17 @@
     into-stream "^3.1.0"
     lodash "^4.17.4"
 
-"@types/adm-zip@^0.4.31":
+"@types/adm-zip@0.4.31":
   version "0.4.31"
   resolved "https://registry.yarnpkg.com/@types/adm-zip/-/adm-zip-0.4.31.tgz#a3376b9fa8f4c6e9c078c176d2df2caeb7939de3"
   dependencies:
     "@types/node" "*"
 
-"@types/aggregate-error@^1.0.0":
+"@types/aggregate-error@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/aggregate-error/-/aggregate-error-1.0.0.tgz#7f811586f42802b1d84223536545263af931d89e"
 
-"@types/archiver@^2.1.2":
+"@types/archiver@2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@types/archiver/-/archiver-2.1.2.tgz#e84960d4872570d7c826589cd57f2c076bf198c5"
   dependencies:
@@ -722,7 +722,7 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
 
-"@types/fs-extra@^5.0.4":
+"@types/fs-extra@5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.4.tgz#b971134d162cc0497d221adde3dbb67502225599"
   dependencies:
@@ -744,7 +744,7 @@
   version "9.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
-"@types/node@^10.7.1":
+"@types/node@10.7.1":
   version "10.7.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.7.1.tgz#b704d7c259aa40ee052eec678758a68d07132a2e"
 
@@ -2193,7 +2193,7 @@ eslint-module-utils@^2.2.0:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
 
-eslint-plugin-import@^2.14.0:
+eslint-plugin-import@2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.14.0.tgz#6b17626d2e3e6ad52cfce8807a845d15e22111a8"
   dependencies:
@@ -2208,7 +2208,7 @@ eslint-plugin-import@^2.14.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-prettier@^2.6.2:
+eslint-plugin-prettier@2.6.2, eslint-plugin-prettier@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.6.2.tgz#71998c60aedfa2141f7bfcbf9d1c459bf98b4fad"
   dependencies:
@@ -2687,7 +2687,7 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-gd-scripts@^1.2.0:
+gd-scripts@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/gd-scripts/-/gd-scripts-1.2.0.tgz#ede8f21a5ecef1860548cd3eeab5003bd7b04401"
   dependencies:
@@ -5247,7 +5247,7 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@^1.14.0, prettier@^1.14.2:
+prettier@1.14.2, prettier@^1.14.0:
   version "1.14.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.2.tgz#0ac1c6e1a90baa22a62925f41963c841983282f9"
 
@@ -5842,7 +5842,7 @@ sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-semantic-release@^15.9.8:
+semantic-release@15.9.8:
   version "15.9.8"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.9.8.tgz#cacd6a160f8155f1ef98eef5923af19979bc34e5"
   dependencies:
