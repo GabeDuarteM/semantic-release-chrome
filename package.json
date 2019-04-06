@@ -1,7 +1,7 @@
 {
   "name": "semantic-release-chrome",
   "version": "0.0.0-development",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "author": "Gabriel Duarte (https://www.gabrielduarte.tech)",
   "license": "MIT",
   "description": "Set of semantic-release plugins for publishing a Chrome extension release",
