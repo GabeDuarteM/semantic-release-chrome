@@ -702,9 +702,9 @@
     into-stream "^3.1.0"
     lodash "^4.17.4"
 
-"@types/adm-zip@0.4.31":
-  version "0.4.31"
-  resolved "https://registry.yarnpkg.com/@types/adm-zip/-/adm-zip-0.4.31.tgz#a3376b9fa8f4c6e9c078c176d2df2caeb7939de3"
+"@types/adm-zip@0.4.32":
+  version "0.4.32"
+  resolved "https://registry.yarnpkg.com/@types/adm-zip/-/adm-zip-0.4.32.tgz#6de01309af60677065d2e52b417a023303220931"
   dependencies:
     "@types/node" "*"
 

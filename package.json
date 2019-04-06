@@ -40,7 +40,7 @@
     "babel-core": "^7.0.0-bridge.0"
   },
   "devDependencies": {
-    "@types/adm-zip": "0.4.31",
+    "@types/adm-zip": "0.4.32",
     "@types/aggregate-error": "1.0.0",
     "@types/archiver": "2.1.2",
     "@types/fs-extra": "5.0.4",
