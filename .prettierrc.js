@@ -1,1 +1,1 @@
-module.exports = require("gd-scripts/prettier")
+module.exports = require('gd-scripts/prettier')

@@ -1,2 +1,5 @@
 package.json
-dist/
+package-lock.json
+/node_modules
+/dist
+/coverage
