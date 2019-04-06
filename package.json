@@ -46,7 +46,7 @@
     "@types/fs-extra": "5.0.4",
     "@types/node": "10.7.1",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-prettier": "2.7.0",
     "gd-scripts": "1.2.0",
     "prettier": "1.14.2",
     "semantic-release": "15.9.8"
