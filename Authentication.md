@@ -21,6 +21,8 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 
    <img width="400" alt="chrome-apis-enable-webstore" src="https://cloud.githubusercontent.com/assets/1402241/21517842/2a9f36a4-cc97-11e6-8ffa-ad49ac2ca3ce.png">
 
+1. On the page that opened, search for `Chrome Web Store API`, and enable it.
+
 1. Open **Credentials** > **Create credentials** > **OAuth client ID**:
 
    <img width="400" alt="create-credentials" src="https://cloud.githubusercontent.com/assets/1402241/21517881/64f727f8-cc97-11e6-9c6b-b347b71352bf.png">

@@ -60,9 +60,11 @@ Uploads the generated zip file to the webstore and publishes a new release.
 
 #### `publish` parameters
 
-- `extensionId`: **REQUIRED** parameter. The `extension id` from the webstore. For example: If the url of your extension is [https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf](https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf), then the last portion, `ikmkicnmahfdilneilgibeppbnolgkaf`, will be the `extension id`.
+- `extensionId`: **REQUIRED** parameter. The `extension id` from the webstore. For example: If the url of your extension is [https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf](https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf), then the last portion, `ikmkicnmahfdilneilgibeppbnolgkaf`, will be the `extension id`. You can also take this ID on the [developers dashboard](https://chrome.google.com/webstore/developer/dashboard), under the name `Item ID` located inside the `More info` dialog.
 
-  Unfortunately, due to Google's restrictions, the plugin can only publish extensions that already exists on the store, so you will have to upload it manually the first time you release.
+  Unfortunately, due to Google's restrictions, this plugin can only publish extensions that already exists on the store, so you will have to at least make a draft release for yourself, so the plugin can create a proper release for the first time. You can create a draft release with just a minimum `manifest.json` with version `0.0.1` compressed in a zip file.
+
+  If you decide to make the draft, make sure to fill all the required fields on the drafts page, otherwise the publishing will fail with a `400` status code (Bad request).
 
 - `asset`: **REQUIRED** parameter. The zip file that will be published to the chrome webstore.
 
