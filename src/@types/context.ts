@@ -1,6 +1,6 @@
 interface Context {
   options?: {}
-  nextRelease: { version: string }
+  nextRelease: { version: string, channel: string }
   logger: Logger
 }
 

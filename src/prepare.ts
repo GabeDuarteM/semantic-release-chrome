@@ -23,7 +23,6 @@ const prepareManifest = (
 const zipFolder = (
   asset: string,
   distFolder: string,
-  version: string,
   logger: Logger,
 ) => {
   const zipPath = resolve(asset)
@@ -60,7 +59,7 @@ const prepare = (
     version,
     logger,
   )
-  zipFolder(asset, normalizedDistFolder, version, logger)
+  zipFolder(asset, normalizedDistFolder, logger)
 }
 
 export default prepare

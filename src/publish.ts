@@ -3,9 +3,10 @@ import AggregateError from 'aggregate-error'
 import cwu from 'chrome-webstore-upload'
 import { createReadStream } from 'fs-extra'
 
+import Context from './@types/context'
 import PluginConfig from './@types/pluginConfig'
 
-const publish = async ({ extensionId, target, asset }: PluginConfig) => {
+const publish = async ({ extensionId, target, asset }: PluginConfig, { nextRelease: { channel } }: Context) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,
@@ -24,6 +25,16 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
       "Option 'asset' was not included in the publish config. Check the README.md for config info.",
       'ENOASSET',
     )
+  }
+
+  if (typeof extensionId !== 'string') {
+    if (!extensionId[channel]) {
+      throw new SemanticReleaseError(
+        "Option 'extensionId' was an object, but the current channel was not included in the publish config. Check the README.md for config info.",
+        'ENOEXTENSIONID'
+      )
+    }
+    extensionId = extensionId[channel]
   }
 
   const webStore = await cwu({
