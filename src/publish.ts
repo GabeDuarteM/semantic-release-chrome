@@ -6,7 +6,7 @@ import { createReadStream } from 'fs-extra'
 import Context from './@types/context'
 import PluginConfig from './@types/pluginConfig'
 
-const publish = async ({ extensionId, target, asset }: PluginConfig, { nextRelease: { channel } }: Context) => {
+const publish = async ({ extensionId, target, asset }: PluginConfig, { nextRelease: { channel = 'default' } }: Context) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,
