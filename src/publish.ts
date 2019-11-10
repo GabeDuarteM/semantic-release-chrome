@@ -3,9 +3,10 @@ import AggregateError from 'aggregate-error'
 import cwu from 'chrome-webstore-upload'
 import { createReadStream } from 'fs-extra'
 
+import Context from './@types/context';
 import PluginConfig from './@types/pluginConfig'
 
-const publish = async ({ extensionId, target, asset }: PluginConfig) => {
+const publish = async ({ extensionId, target, asset }: PluginConfig, { logger }: Context) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,
@@ -55,12 +56,18 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   if (!publishRes.status.includes('OK')) {
     const errors: SemanticReleaseError[] = []
     for (let i = 0; i < publishRes.status.length; i += 1) {
-      const message = publishRes.statusDetail[i]
       const code = publishRes.status[i]
-      const err = new SemanticReleaseError(message, code)
-      errors.push(err)
+      const message = publishRes.statusDetail[i]
+      if (code.includes('WARNING')) {
+        logger.log('%s: %s', code, message)
+      } else {
+        const err = new SemanticReleaseError(message, code)
+        errors.push(err)
+      }
     }
-    throw new AggregateError(errors)
+    if (errors.length > 0) {
+      throw new AggregateError(errors)
+    }
   }
 
   return {
