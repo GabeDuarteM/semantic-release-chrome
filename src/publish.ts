@@ -55,7 +55,7 @@ const publish = async ({ extensionId, target, asset }: PluginConfig) => {
   if (!publishRes.status.includes('OK')) {
     const errors: SemanticReleaseError[] = []
     for (let i = 0; i < publishRes.status.length; i += 1) {
-      const message = publishRes.statusList[i]
+      const message = publishRes.statusDetail[i]
       const code = publishRes.status[i]
       const err = new SemanticReleaseError(message, code)
       errors.push(err)
