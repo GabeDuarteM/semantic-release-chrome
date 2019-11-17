@@ -120,6 +120,8 @@ MIT
 [build-badge]: https://img.shields.io/travis/com/GabrielDuarteM/semantic-release-chrome/master.svg?style=flat-square
 [build]: https://travis-ci.com/GabrielDuarteM/semantic-release-chrome
 [coverage-badge]: https://img.shields.io/codecov/c/github/GabrielDuarteM/semantic-release-chrome.svg?style=flat-square
+[build-badge]: https://github.com/GabrielDuarteM/semantic-release-chrome/workflows/Node%20CI/badge.svg
+[build]: https://github.com/GabrielDuarteM/semantic-release-chrome/actions
 [coverage]: https://codecov.io/github/GabrielDuarteM/semantic-release-chrome
 [version-badge]: https://img.shields.io/npm/v/semantic-release-chrome.svg?style=flat-square
 [package]: https://www.npmjs.com/package/semantic-release-chrome
