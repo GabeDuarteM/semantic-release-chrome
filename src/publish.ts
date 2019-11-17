@@ -8,7 +8,10 @@ import PluginConfig from './@types/pluginConfig'
 
 const errorWhitelist = ['PUBLISHED_WITH_FRICTION_WARNING']
 
-const publish = async ({ extensionId, target, asset }: PluginConfig, { logger }: Context) => {
+const publish = async (
+  { extensionId, target, asset }: PluginConfig,
+  { logger }: Context,
+) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,
