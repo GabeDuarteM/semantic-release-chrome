@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Echo versions used
-      run: echo "node:" && node --version && echo "\nnpm:" && npm --version && echo "\nyarn:" && yarn --version
+      run: echo "node:" && node --version && echo "" && echo "npm:" && npm --version && echo "" && echo "yarn:" && yarn --version
 
     - name: Install dependencies
       run: yarn install
@@ -48,7 +48,7 @@ jobs:
         node-version: 13.x
 
     - name: Echo versions used
-      run: echo "node:" && node --version && echo "\nnpm:" && npm --version && echo "\nyarn:" && yarn --version
+      run: echo "node:" && node --version && echo "" && echo "npm:" && npm --version && echo "" && echo "yarn:" && yarn --version
 
     - name: Install dependencies
       run: yarn install
