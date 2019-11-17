@@ -59,7 +59,7 @@ const publish = async ({ extensionId, target, asset }: PluginConfig, { logger }:
       const code = publishRes.status[i]
       const message = publishRes.statusDetail[i]
       if (code.includes('WARNING')) {
-        logger.log('%s: %s', code, message)
+        logger.log(`${code}: ${message}`)
       } else {
         const err = new SemanticReleaseError(message, code)
         errors.push(err)
