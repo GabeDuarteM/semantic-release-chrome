@@ -117,7 +117,7 @@ MIT
 
 [npm]: https://www.npmjs.com/
 [node]: https://nodejs.org
-[build-badge]: https://github.com/GabrielDuarteM/semantic-release-chrome/workflows/Node%20CI/badge.svg
+[build-badge]: https://github.com/GabrielDuarteM/semantic-release-chrome/workflows/CI/badge.svg
 [build]: https://github.com/GabrielDuarteM/semantic-release-chrome/actions
 [coverage-badge]: https://img.shields.io/codecov/c/github/GabrielDuarteM/semantic-release-chrome.svg
 [coverage]: https://codecov.io/github/GabrielDuarteM/semantic-release-chrome
