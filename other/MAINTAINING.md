@@ -29,8 +29,8 @@ as you want/need to. Nobody can ask any more of you than that.
 As a maintainer, you're fine to make your branches on the main repo or on your own fork. Either
 way is fine.
 
-When we receive a pull request, a travis build is kicked off automatically (see the `.travis.yml`
-for what runs in the travis build). We avoid merging anything that breaks the travis build.
+When we receive a pull request, a github workflow is kicked off automatically (check `.github/workflows/nodejs.yml`
+for more info). We avoid merging anything that breaks the build.
 
 Please review PRs and focus on the code rather than the individual. You never know when this is
 someone's first ever PR and we want their experience to be as positive as possible, so be
@@ -44,7 +44,7 @@ about that.
 
 ## Release
 
-Our releases are automatic. They happen whenever code lands into `master`. A travis build gets
+Our releases are automatic. They happen whenever code lands into `master`. A GitHub workflow gets
 kicked off and if it's successful, a tool called
 [`semantic-release`](https://github.com/semantic-release/semantic-release) is used to
 automatically publish a new release to npm as well as a changelog to GitHub. It is only able to
