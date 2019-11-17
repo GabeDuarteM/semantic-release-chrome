@@ -3,8 +3,10 @@ import AggregateError from 'aggregate-error'
 import cwu from 'chrome-webstore-upload'
 import { createReadStream } from 'fs-extra'
 
-import Context from './@types/context';
+import Context from './@types/context'
 import PluginConfig from './@types/pluginConfig'
+
+const errorWhitelist = ['PUBLISHED_WITH_FRICTION_WARNING']
 
 const publish = async ({ extensionId, target, asset }: PluginConfig, { logger }: Context) => {
   const {
@@ -58,7 +60,7 @@ const publish = async ({ extensionId, target, asset }: PluginConfig, { logger }:
     for (let i = 0; i < publishRes.status.length; i += 1) {
       const code = publishRes.status[i]
       const message = publishRes.statusDetail[i]
-      if (code.includes('WARNING')) {
+      if (errorWhitelist.includes(code)) {
         logger.log(`${code}: ${message}`)
       } else {
         const err = new SemanticReleaseError(message, code)
