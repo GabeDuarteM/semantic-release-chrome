@@ -64,7 +64,7 @@ const publish = async (
       const code = publishRes.status[i]
       const message = publishRes.statusDetail[i]
       if (errorWhitelist.includes(code)) {
-        logger.log(`${code}: ${message}`)
+        logger.warn(`${code}: ${message}`)
       } else {
         const err = new SemanticReleaseError(message, code)
         errors.push(err)
