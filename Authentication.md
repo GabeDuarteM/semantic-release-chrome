@@ -11,7 +11,7 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 > Note: the names you enter below don't really matter, so you can just put whatever you feel comfortable with.
 
 1. Visit the [Google API Console][api-console].
-1. Create new project:
+1. Create a new project:
 
    <img width="296" alt="chrome-apis-create-project" src="https://cloud.githubusercontent.com/assets/1402241/21517725/55e5c626-cc96-11e6-9b55-ec9c80e10ec4.png">
 
@@ -42,7 +42,7 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 
    https://accounts.google.com/o/oauth2/auth?client_id=<YOUR_CLIENT_ID>&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 
-1. Follow the steps shown on the screen and, on the last page, you will see another code which is the `auth code`. Save this value, as we will also use it later.
+1. Follow the steps shown on the screen and, on the last page, you will see another code which is the `auth code`. Save this value, as we will also use it later. If you happen to see a screen saying something like `This app isn't verified`, just click on `Advanced`, and then `Go to <App name> (unsafe)`. It only says that because the app you just created is not verified by Google, but in our case, it doesn't make a difference.
 
    > <img width="400" alt="auth code" src="https://cloud.githubusercontent.com/assets/1402241/21518094/c3033bb0-cc98-11e6-82bb-f6c69ca103fe.png">
 
@@ -83,4 +83,4 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 
 Now you should have all three environment variables correctly set. You can use the same values for all your extensions, but remember not share them publicly, as they will allow anyone to publish your extensions!
 
-[api-console]: https://console.developers.google.com/apis/api/chromewebstore/overview
+[api-console]:  console.developers.google.com/apis/api/chromewebstore.googleapis.com/overview
