@@ -83,4 +83,4 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 
 Now you should have all three environment variables correctly set. You can use the same values for all your extensions, but remember not share them publicly, as they will allow anyone to publish your extensions!
 
-[api-console]:  console.developers.google.com/apis/api/chromewebstore.googleapis.com/overview
+[api-console]: https://console.developers.google.com/apis/api/chromewebstore.googleapis.com/overview
