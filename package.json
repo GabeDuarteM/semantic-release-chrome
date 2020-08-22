@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@semantic-release/error": "2.2.0",
-    "aggregate-error": "3.0.0",
+    "aggregate-error": "3.1.0",
     "archiver": "3.0.0",
     "chrome-webstore-upload": "0.2.2",
     "fs-extra": "7.0.1"
