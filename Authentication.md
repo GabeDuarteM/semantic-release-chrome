@@ -40,7 +40,9 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
 
 1. In the following URL, replace `<YOUR_CLIENT_ID>` with the value of your `client ID`, and open it:
 
+   ```
    https://accounts.google.com/o/oauth2/auth?client_id=<YOUR_CLIENT_ID>&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+   ```
 
 1. Follow the steps shown on the screen and, on the last page, you will see another code which is the `auth code`. Save this value, as we will also use it later. If you happen to see a screen saying something like `This app isn't verified`, just click on `Advanced`, and then `Go to <App name> (unsafe)`. It only says that because the app you just created is not verified by Google, but in our case, it doesn't make a difference.
 
