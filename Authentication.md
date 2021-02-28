@@ -16,37 +16,53 @@ Below is a step-by-step of how to get the values to correctly fill those variabl
    <img width="296" alt="chrome-apis-create-project" src="https://cloud.githubusercontent.com/assets/1402241/21517725/55e5c626-cc96-11e6-9b55-ec9c80e10ec4.png">
 
 1. Enter a name and click `Create`. This can take some seconds, and Google will notify you when it's done.
-1. Visit the [Google API Console][api-console] again.
+1. Visit the [OAuth Consent Screen configuration page](https://console.developers.google.com/apis/credentials/consent).
+1. Select "Internal" as the user type. Then click "Create".
+
+   > <img width="400" alt="configure user type screen" src="https://user-images.githubusercontent.com/630449/109427335-30ce5b80-79af-11eb-934e-d2596e7df909.png">
+
+   Enter an app name, user support email and developer contact information and click "Save and Continue".
+
+   > <img width="400" alt="configure oauth screen" src="https://user-images.githubusercontent.com/630449/109427083-fdd79800-79ad-11eb-8315-69b27a58f38d.png">
+
+   On the next page, the "Scopes" step, leave everything as default and click "Save & Continue".
+
+   > <img width="400" alt="configure consent screen" src="https://user-images.githubusercontent.com/630449/109427533-0b8e1d00-79b0-11eb-98f6-e63410459892.png">
+
+   On the next page, click "Back to Dashboard".
+
+1. Visit the [Chrome Web Store API Console page][api-console].
 1. Enable the API, clicking on the button `Enable`:
 
-   <img width="400" alt="chrome-apis-enable-webstore" src="https://cloud.githubusercontent.com/assets/1402241/21517842/2a9f36a4-cc97-11e6-8ffa-ad49ac2ca3ce.png">
+   <img width="400" alt="chrome-apis-enable-webstore" src="https://user-images.githubusercontent.com/630449/109427423-97ec1000-79af-11eb-9451-2f53f48fbbe2.png">
 
-1. On the page that opened, search for `Chrome Web Store API`, and enable it.
+1. Click "Credentials" from the sidebar.
 
-1. Open **Credentials** > **Create credentials** > **OAuth client ID**:
+   <img width="400" alt="credentials link in the sidebar" src="https://user-images.githubusercontent.com/630449/109427493-e3062300-79af-11eb-8430-8e85771db1fb.png">
 
-   <img width="400" alt="create-credentials" src="https://cloud.githubusercontent.com/assets/1402241/21517881/64f727f8-cc97-11e6-9c6b-b347b71352bf.png">
+1. Click the "Create Credentials" dropdown and choose "Oauth Client ID".
 
-1. Click on **Configure consent screen**:
+   <img width="400" alt="create-credentials" src="https://user-images.githubusercontent.com/630449/109427565-3aa48e80-79b0-11eb-95fa-3059efbfbdc3.png">
 
-   > <img width="400" alt="configure consent screen" src="https://cloud.githubusercontent.com/assets/1402241/21517907/92640e0e-cc97-11e6-93f7-d077664eead9.png">
+   Note: If you just created a project, it might take a few minutes for "OAuth Client ID" to appear in the dropdown list. You'll need to refresh to page to see it appear.
 
-1. Enter a product name and save.
-1. Select **Other** and click **Create**:
+1. On the next page, choose Application type "Desktop app" and add a name. Click "Create".
 
-   > <img width="187" alt="client type id" src="https://cloud.githubusercontent.com/assets/1402241/21517952/d1f36fce-cc97-11e6-92c0-de4485d97736.png">
+   > <img width="400" alt="client type id" src="https://user-images.githubusercontent.com/630449/109427629-7c353980-79b0-11eb-9864-357baddd3efe.png">
 
 1. A new modal opens, with two fields, the first containing a `client ID`, and the second containing a `client secret`. Save those values, as we are going to need them later.
 
+   > <img width="400" alt="configure consent screen" src="https://user-images.githubusercontent.com/630449/109427660-a1c24300-79b0-11eb-9857-70328ee8f116.png">
+
 1. In the following URL, replace `<YOUR_CLIENT_ID>` with the value of your `client ID`, and open it:
 
-   https://accounts.google.com/o/oauth2/auth?client_id=<YOUR_CLIENT_ID>&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+   > https://accounts.google.com/o/oauth2/auth?client_id=<YOUR_CLIENT_ID>&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 
 1. Follow the steps shown on the screen and, on the last page, you will see another code which is the `auth code`. Save this value, as we will also use it later. If you happen to see a screen saying something like `This app isn't verified`, just click on `Advanced`, and then `Go to <App name> (unsafe)`. It only says that because the app you just created is not verified by Google, but in our case, it doesn't make a difference.
 
-   > <img width="400" alt="auth code" src="https://cloud.githubusercontent.com/assets/1402241/21518094/c3033bb0-cc98-11e6-82bb-f6c69ca103fe.png">
+   > <img width="400" alt="auth code" src="https://user-images.githubusercontent.com/630449/109427733-f960ae80-79b0-11eb-9e3a-9b2b3b102ad4.png">
 
-1. Run this in your browser's console.  
+1. Run this in your browser's console.
    It's just a wizard to create and copy a `curl` into your clipboard:
 
    ```js
