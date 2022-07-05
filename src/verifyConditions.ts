@@ -1,5 +1,4 @@
 import SemanticReleaseError from '@semantic-release/error'
-import AggregateError from 'aggregate-error'
 
 const configMessage = 'Check the README.md for config info.'
 
@@ -30,7 +29,7 @@ const verifyConditions = () => {
   }
 
   if (errors.length > 0) {
-    throw new AggregateError(errors)
+    throw new AggregateError(errors).errors
   }
 }
 

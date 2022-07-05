@@ -3,7 +3,7 @@ interface PluginConfig {
   distFolder: string
   asset: string
   extensionId: string
-  target: 'default' | 'trustedTesters'
+  target: 'default' | 'trustedTesters' | 'draft'
 }
 
 export default PluginConfig
