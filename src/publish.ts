@@ -1,12 +1,23 @@
 import SemanticReleaseError from '@semantic-release/error'
-import AggregateError from 'aggregate-error'
-import cwu from 'chrome-webstore-upload'
 import { createReadStream } from 'fs-extra'
+import { Context } from 'semantic-release'
 
-import Context from './@types/context'
-import PluginConfig from './@types/pluginConfig'
+import type PluginConfig from './@types/pluginConfig'
 
 const errorWhitelist = ['PUBLISHED_WITH_FRICTION_WARNING']
+
+const modulesCache: { [keyof: string]: any } = {}
+
+const getEsModule = async (module: string) => {
+  if (modulesCache[module]) {
+    return modulesCache[module]
+  }
+
+  const esModule = await import(module)
+  modulesCache[module] = esModule.default || esModule
+
+  return modulesCache[module]
+}
 
 const publish = async (
   { extensionId, target, asset }: PluginConfig,
@@ -32,17 +43,17 @@ const publish = async (
     )
   }
 
-  const webStore = await cwu({
+  const webStore = await (
+    await getEsModule('chrome-webstore-upload')
+  )({
     clientId,
     clientSecret,
     extensionId,
     refreshToken,
   })
 
-  const token = await webStore.fetchToken()
-
   const zipFile = createReadStream(asset)
-  const uploadRes = await webStore.uploadExisting(zipFile, token)
+  const uploadRes = await webStore.uploadExisting(zipFile)
 
   if (uploadRes.uploadState === 'FAILURE') {
     const errors: SemanticReleaseError[] = []
@@ -53,10 +64,10 @@ const publish = async (
       )
       errors.push(semanticError)
     })
-    throw new AggregateError(errors)
+    throw new AggregateError(errors).errors
   }
 
-  const publishRes = await webStore.publish(target || 'default', token)
+  const publishRes = await webStore.publish(target || 'default')
 
   if (!publishRes.status.includes('OK')) {
     const errors: SemanticReleaseError[] = []
@@ -64,14 +75,14 @@ const publish = async (
       const code = publishRes.status[i]
       const message = publishRes.statusDetail[i]
       if (errorWhitelist.includes(code)) {
-        logger.warn(`${code}: ${message}`)
+        logger.log(`${code}: ${message}`)
       } else {
         const err = new SemanticReleaseError(message, code)
         errors.push(err)
       }
     }
     if (errors.length > 0) {
-      throw new AggregateError(errors)
+      throw new AggregateError(errors).errors
     }
   }
 
