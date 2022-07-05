@@ -1,1 +1,5 @@
-module.exports = require('gd-scripts/prettier')
+module.exports = {
+  semi: false,
+  singleQuote: true,
+  trailingComma: 'all',
+}

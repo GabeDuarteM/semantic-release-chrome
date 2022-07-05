@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "loose": true,
+        "exclude": [
+          "proposal-dynamic-import"
+        ]
+      }
+    ],
+    ["@babel/preset-typescript"]
+  ],
+  "ignore": [
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.d.ts",
+    "__mocks__",
+    "@types"
+  ]
+}

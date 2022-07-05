@@ -5,13 +5,13 @@ import { readJsonSync, writeJsonSync } from 'fs-extra'
 import { createWriteStream } from 'fs'
 import { resolve } from 'path'
 
-import Context, { Logger } from './@types/context'
-import PluginConfig from './@types/pluginConfig'
+import type PluginConfig from './@types/pluginConfig'
+import { Context } from 'semantic-release'
 
 const prepareManifest = (
   manifestPath: string,
   version: string,
-  logger: Logger,
+  logger: Context['logger'],
 ) => {
   const manifest = readJsonSync(manifestPath)
 
@@ -24,7 +24,7 @@ const zipFolder = (
   asset: string,
   distFolder: string,
   version: string,
-  logger: Logger,
+  logger: Context['logger'],
 ) => {
   const zipPath = resolve(asset)
   const output = createWriteStream(zipPath)
@@ -51,7 +51,12 @@ const prepare = (
     )
   }
 
-  const version = nextRelease.version
+  const version = nextRelease?.version
+  if (!version) {
+    throw new SemanticReleaseError(
+      'Could not determine the version from semantic release.',
+    )
+  }
 
   const normalizedDistFolder = distFolder || 'dist'
 
