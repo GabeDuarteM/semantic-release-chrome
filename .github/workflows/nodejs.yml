@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x, lts/*, latest]
+        node-version: [16.x, latest]
 
     steps:
       - name: Checkout code
@@ -45,7 +45,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 15.x
+          node-version: 16.x
 
       - name: Echo versions used
         run: echo "node:" && node --version && echo "" && echo "npm:" && npm --version && echo "" && echo "yarn:" && yarn --version

@@ -6,7 +6,7 @@
   "license": "MIT",
   "description": "Set of semantic-release plugins for publishing a Chrome extension release",
   "engines": {
-    "node": ">=15"
+    "node": ">=16"
   },
   "keywords": [
     "semantic-release",
