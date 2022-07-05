@@ -68,7 +68,10 @@ Uploads the generated zip file to the webstore and publishes a new release.
 
 - `asset`: **REQUIRED** parameter. The zip file that will be published to the chrome webstore.
 
-- `target`: can be `default` or `trustedTesters`. When released using the first, the extension will be publicly available to everyone. When `trustedTesters` is used, it will be released as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`.
+- `target`: Valid options are:
+  - `default`: The extension will be publicly available to everyone. This is the default option if left blank.
+  - `draft`: Uploads the extension to the webstore, but skips the publishing step.
+  - `trustedTesters`: Releases the extension as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`.
 
 ### Chrome webstore authentication
 
