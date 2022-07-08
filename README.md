@@ -58,6 +58,10 @@ This plugin requires some parameters to be set, so be sure to check below and fi
 
 - `manifestPath`: The path of the `manifest.json` file inside the dist folder. Defaults to `<distFolder parameter>/manifest.json`.
 
+The `asset` parameter is parsed with Lodash template. The following variables are available: `branch`, `lastRelease`, `nextRelease` and `commits`. Search on the [plugins](https://github.com/semantic-release/semantic-release/blob/master/docs/developer-guide/plugin.md) documentation to see the type of those objects.
+
+Example: `my-extension_v${nextRelease.version}_${branch.name}.zip` will result in something like `my-extension_v2.3.1_main.zip`
+
 ### `publish`
 
 Uploads the generated zip file to the webstore and publishes a new release.
@@ -75,6 +79,10 @@ If you decide to make the draft, make sure to fill all the required fields on th
   - `default`: The extension will be publicly available to everyone. This is the default option if left blank.
   - `draft`: Uploads the extension to the webstore, but skips the publishing step.
   - `trustedTesters`: Releases the extension as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`.
+
+The `asset` parameter is parsed with Lodash template. The following variables are available: `branch`, `lastRelease`, `nextRelease` and `commits`. Search on the [plugins](https://github.com/semantic-release/semantic-release/blob/master/docs/developer-guide/plugin.md) documentation to see the type of those objects.
+
+Example: `my-extension_v${nextRelease.version}_${branch.name}.zip` will result in something like `my-extension_v2.3.1_main.zip`
 
 ### Chrome webstore authentication
 

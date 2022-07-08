@@ -1,6 +1,7 @@
 import SemanticReleaseError from '@semantic-release/error'
 import { createReadStream } from 'fs-extra'
 import { Context } from 'semantic-release'
+import template from 'lodash.template'
 
 import type PluginConfig from './@types/pluginConfig'
 import getEsModule from './getEsModule'
@@ -9,7 +10,7 @@ const errorWhitelist = ['PUBLISHED_WITH_FRICTION_WARNING']
 
 const publish = async (
   { extensionId, target, asset }: PluginConfig,
-  { logger }: Context,
+  { logger, branch, lastRelease, nextRelease, commits }: Context,
 ) => {
   const {
     GOOGLE_CLIENT_ID: clientId,
@@ -44,7 +45,14 @@ const publish = async (
 
   logger.log('Creating zip file...')
 
-  const zipFile = createReadStream(asset)
+  const compiledAssetString = template(asset)({
+    branch,
+    lastRelease,
+    nextRelease,
+    commits,
+  })
+
+  const zipFile = createReadStream(compiledAssetString)
   const errorMessage = `
 
   [ERROR] Semantic Release Chrome
