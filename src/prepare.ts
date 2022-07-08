@@ -1,6 +1,7 @@
 import SemanticReleaseError from '@semantic-release/error'
 import archiver from 'archiver'
 import { readJsonSync, writeJsonSync } from 'fs-extra'
+import template from 'lodash.template'
 
 import { createWriteStream } from 'fs'
 import { resolve } from 'path'
@@ -23,7 +24,6 @@ const prepareManifest = (
 const zipFolder = (
   asset: string,
   distFolder: string,
-  version: string,
   logger: Context['logger'],
 ) => {
   const zipPath = resolve(asset)
@@ -42,7 +42,7 @@ const zipFolder = (
 
 const prepare = (
   { manifestPath, distFolder, asset }: PluginConfig,
-  { nextRelease, logger }: Context,
+  { nextRelease, logger, lastRelease, branch, commits }: Context,
 ) => {
   if (!asset) {
     throw new SemanticReleaseError(
@@ -60,12 +60,19 @@ const prepare = (
 
   const normalizedDistFolder = distFolder || 'dist'
 
+  const compiledAssetString = template(asset)({
+    branch,
+    lastRelease,
+    nextRelease,
+    commits,
+  })
+
   prepareManifest(
     manifestPath || `${normalizedDistFolder}/manifest.json`,
     version,
     logger,
   )
-  zipFolder(asset, normalizedDistFolder, version, logger)
+  zipFolder(compiledAssetString, normalizedDistFolder, logger)
 }
 
 export default prepare
