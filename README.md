@@ -88,33 +88,20 @@ A basic configuration file example is available below:
 
 ```json
 {
-  "verifyConditions": [
-    {
-      "path": "semantic-release-chrome",
-      "extensionId": "mppjhhbajcciljocgbadbhbgphjfdmhj"
-    },
-    "@semantic-release/github"
-  ],
-  "prepare": [
-    {
-      "path": "semantic-release-chrome",
-      "asset": "my-extension.zip"
-    }
-  ],
-  "publish": [
-    {
-      "path": "semantic-release-chrome",
-      "asset": "my-extension.zip",
-      "extensionId": "mppjhhbajcciljocgbadbhbgphjfdmhj"
-    },
-    {
-      "path": "@semantic-release/github",
-      "assets": [
-        {
-          "path": "my-extension.zip"
-        }
-      ]
-    }
+  "plugins": [
+    [
+      "semantic-release-chrome",
+      {
+        "extensionId": "mppjhhbajcciljocgbadbhbgphjfdmhj",
+        "asset": "my-extension.zip"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": ["my-extension.zip"]
+      }
+    ]
   ]
 }
 ```
