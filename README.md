@@ -40,6 +40,10 @@ This package export the following plugins:
 
 Verify the presence of the authentication parameters, which are set via environment variables (see [Chrome webstore authentication][chrome-authentication]).
 
+#### `verifyConditions` parameters
+
+- `extensionId`: **REQUIRED** parameter. The `extension id` from the webstore. For example: If the url of your extension is [https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf](https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf), then the last portion, `ikmkicnmahfdilneilgibeppbnolgkaf`, will be the `extension id`. You can also take this ID on the [developers dashboard](https://chrome.google.com/webstore/developer/dashboard), under the name `Item ID` located inside the `More info` dialog. This is used so that we can confirm that the credentials are working for the extension you are trying to publish.
+
 ### `prepare`
 
 Writes the correct version to the `manifest.json` and creates a `zip` file with everything inside the `dist` folder.
@@ -58,13 +62,12 @@ This plugin requires some parameters to be set, so be sure to check below and fi
 
 Uploads the generated zip file to the webstore and publishes a new release.
 
+Unfortunately, due to Google's restrictions, this plugin can only publish extensions that already exists on the store, so you will have to at least make a draft release for yourself, so the plugin can create a proper release for the first time. You can create a draft release with just a minimum `manifest.json` with version `0.0.1` compressed in a zip file.
+If you decide to make the draft, make sure to fill all the required fields on the drafts page, otherwise the publish will fail with a `400` status code (Bad request).
+
 #### `publish` parameters
 
 - `extensionId`: **REQUIRED** parameter. The `extension id` from the webstore. For example: If the url of your extension is [https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf](https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf), then the last portion, `ikmkicnmahfdilneilgibeppbnolgkaf`, will be the `extension id`. You can also take this ID on the [developers dashboard](https://chrome.google.com/webstore/developer/dashboard), under the name `Item ID` located inside the `More info` dialog.
-
-  Unfortunately, due to Google's restrictions, this plugin can only publish extensions that already exists on the store, so you will have to at least make a draft release for yourself, so the plugin can create a proper release for the first time. You can create a draft release with just a minimum `manifest.json` with version `0.0.1` compressed in a zip file.
-
-  If you decide to make the draft, make sure to fill all the required fields on the drafts page, otherwise the publishing will fail with a `400` status code (Bad request).
 
 - `asset`: **REQUIRED** parameter. The zip file that will be published to the chrome webstore.
 
@@ -85,7 +88,13 @@ A basic configuration file example is available below:
 
 ```json
 {
-  "verifyConditions": ["semantic-release-chrome", "@semantic-release/github"],
+  "verifyConditions": [
+    {
+      "path": "semantic-release-chrome",
+      "extensionId": "mppjhhbajcciljocgbadbhbgphjfdmhj"
+    },
+    "@semantic-release/github"
+  ],
   "prepare": [
     {
       "path": "semantic-release-chrome",
