@@ -44,6 +44,9 @@ Verify the presence of the authentication parameters, which are set via environm
 
 - `extensionId`: **REQUIRED** parameter. The `extension id` from the webstore. For example: If the url of your extension is [https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf](https://chrome.google.com/webstore/detail/webplayer-hotkeys-shortcu/ikmkicnmahfdilneilgibeppbnolgkaf), then the last portion, `ikmkicnmahfdilneilgibeppbnolgkaf`, will be the `extension id`. You can also take this ID on the [developers dashboard](https://chrome.google.com/webstore/developer/dashboard), under the name `Item ID` located inside the `More info` dialog. This is used so that we can confirm that the credentials are working for the extension you are trying to publish.
 
+- `target`: Valid options are:
+  - `local`: Skips Chrome store credentials verification
+
 ### `prepare`
 
 Writes the correct version to the `manifest.json` and creates a `zip` file with everything inside the `dist` folder.
@@ -79,6 +82,7 @@ If you decide to make the draft, make sure to fill all the required fields on th
   - `default`: The extension will be publicly available to everyone. This is the default option if left blank.
   - `draft`: Uploads the extension to the webstore, but skips the publishing step.
   - `trustedTesters`: Releases the extension as a [private extension](https://support.google.com/chrome/a/answer/2663860). Defaults to `default`.
+  - `local`: Skips the publish step
 
 The `asset` parameter is parsed with Lodash template. The following variables are available: `branch`, `lastRelease`, `nextRelease` and `commits`. Search on the [plugins](https://github.com/semantic-release/semantic-release/blob/master/docs/developer-guide/plugin.md) documentation to see the type of those objects.
 
