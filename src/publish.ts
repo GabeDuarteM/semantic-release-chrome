@@ -12,6 +12,11 @@ const publish = async (
   { extensionId, target, asset }: PluginConfig,
   { logger, branch, lastRelease, nextRelease, commits }: Context,
 ) => {
+  if (target === 'local') {
+    logger.log('Target option is set to "local", skipping the publish step.')
+    return
+  }
+
   const {
     GOOGLE_CLIENT_ID: clientId,
     GOOGLE_CLIENT_SECRET: clientSecret,

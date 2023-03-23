@@ -12,9 +12,14 @@ const createErrorEnvFile = (param: string, code: string) =>
   )
 
 const verifyConditions = async (
-  { extensionId }: PluginConfig,
+  { extensionId, target }: PluginConfig,
   { logger }: Context,
 ) => {
+  if (target === 'local') {
+    logger.log('Target option is set to "local". Skipping verification of Chrome store credentials.')
+    return
+  }
+
   const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } =
     process.env
   const errors: Error[] = []
