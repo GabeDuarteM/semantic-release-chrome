@@ -61,6 +61,8 @@ This plugin requires some parameters to be set, so be sure to check below and fi
 
 - `manifestPath`: The path of the `manifest.json` file inside the dist folder. Defaults to `<distFolder parameter>/manifest.json`.
 
+- `allowPrerelease`: Boolean value that specifies if pre-release versions should be allowed. When set to true, if a pre-release version (such as `1.0.0-develop.1`) is passed to this plugin, the semantic release number (`1.0.0`) will be parsed and used for the chrome web store publish.
+
 The `asset` parameter is parsed with Lodash template. The following variables are available: `branch`, `lastRelease`, `nextRelease` and `commits`. Search on the [plugins](https://github.com/semantic-release/semantic-release/blob/master/docs/developer-guide/plugin.md) documentation to see the type of those objects.
 
 Example: `my-extension_v${nextRelease.version}_${branch.name}.zip` will result in something like `my-extension_v2.3.1_main.zip`
