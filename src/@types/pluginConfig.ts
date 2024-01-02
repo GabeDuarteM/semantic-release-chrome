@@ -4,6 +4,7 @@ interface PluginConfig {
   asset: string
   extensionId: string
   target: 'default' | 'trustedTesters' | 'draft' | 'local'
+  allowPrerelease?: string
 }
 
 export default PluginConfig

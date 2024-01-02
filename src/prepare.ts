@@ -40,8 +40,29 @@ const zipFolder = (
   logger.log('Wrote zipped file to %s', zipPath)
 }
 
+/**
+ * Attempts to parse a semantic version number from a pre-release version string.
+ * 
+ * Context:
+ * The semantic-release package will provide a version string such as '1.0.0-develop.1' when using the 
+ * pre-release functionality. This function will parse out the semantic version number '1.0.0' from this
+ * string, so that the version will adhere to the chrome web store's version format requirement.
+ * 
+ * @param prereleaseVersion pre-release version string from which to parse the semantic version number
+ * @returns semantic version number parsed from prereleaseVersion input. throws error if unable to parse
+ */
+export const parsePrereleaseVersion = (prereleaseVersion: string) => {
+  const versionMatch = prereleaseVersion?.match(/\d+\.\d+\.\d+/)
+  if (!versionMatch) {
+      throw new SemanticReleaseError(
+        'Could not parse semantic version number from pre-release version',
+      )
+  }
+  return versionMatch[0]
+}
+
 const prepare = (
-  { manifestPath, distFolder, asset }: PluginConfig,
+  { manifestPath, distFolder, asset, allowPrerelease }: PluginConfig,
   { nextRelease, logger, lastRelease, branch, commits }: Context,
 ) => {
   if (!asset) {
@@ -51,12 +72,13 @@ const prepare = (
     )
   }
 
-  const version = nextRelease?.version
-  if (!version) {
+  const nextReleaseVersion = nextRelease?.version
+  if (!nextReleaseVersion) {
     throw new SemanticReleaseError(
       'Could not determine the version from semantic release.',
     )
   }
+  const version = allowPrerelease ? parsePrereleaseVersion(nextReleaseVersion) : nextReleaseVersion
 
   const normalizedDistFolder = distFolder || 'dist'
 
