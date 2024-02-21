@@ -26,7 +26,7 @@ jobs:
         run: echo "node:" && node --version && echo "" && echo "npm:" && npm --version && echo "" && echo "yarn:" && yarn --version
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Run CI script
         run: yarn run ci
@@ -51,7 +51,7 @@ jobs:
         run: echo "node:" && node --version && echo "" && echo "npm:" && npm --version && echo "" && echo "yarn:" && yarn --version
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Run build
         run: yarn run build
