@@ -24,7 +24,8 @@
     "start": "yarn build --watch",
     "build": "rimraf ./dist && tsc && babel src --out-dir dist --extensions .js,.jsx,.ts,.tsx",
     "lint": "eslint src",
-    "ci": "yarn lint && yarn build",
+    "ci": "yarn lint && yarn build && yarn test",
+    "test": "jest",
     "typecheck": "tsc --noEmit",
     "release": "semantic-release"
   },
@@ -42,6 +43,7 @@
     "@typescript-eslint/parser": "5.30.5",
     "eslint": "8.19.0",
     "eslint-config-prettier": "8.5.0",
+    "jest": "29.7.0",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
     "semantic-release": "19.0.3",

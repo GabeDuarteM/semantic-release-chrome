@@ -12,13 +12,19 @@ import { Context } from 'semantic-release'
 const prepareManifest = (
   manifestPath: string,
   version: string,
+  versionName: string,
   logger: Context['logger'],
 ) => {
   const manifest = readJsonSync(manifestPath)
 
-  writeJsonSync(manifestPath, { ...manifest, version }, { spaces: 2 })
+  writeJsonSync(
+    manifestPath,
+    { ...manifest, version, versionName },
+    { spaces: 2 },
+  )
 
   logger.log('Wrote version %s to %s', version, manifestPath)
+  logger.log('Wrote version_name %s to %s', versionName, manifestPath)
 }
 
 const zipFolder = (
@@ -40,6 +46,29 @@ const zipFolder = (
   logger.log('Wrote zipped file to %s', zipPath)
 }
 
+const findLastNumericPart = (preRelease?: string) => {
+  const parts = preRelease?.split('.') || []
+  return parts.reverse().find((part) => part.match(/^[0-9]+$/))
+}
+
+export const formatExtensionVersion = (version?: string) => {
+  const semanticVersionRegExp =
+    /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+  const versionMatch = version?.match(semanticVersionRegExp)
+
+  if (!versionMatch) {
+    throw new SemanticReleaseError(
+      'Version does not fit semantic version format',
+    )
+  }
+
+  const [, major, minor, patch, preRelease] = versionMatch
+
+  return [major, minor, patch, findLastNumericPart(preRelease)]
+    .filter(Boolean)
+    .join('.')
+}
+
 const prepare = (
   { manifestPath, distFolder, asset }: PluginConfig,
   { nextRelease, logger, lastRelease, branch, commits }: Context,
@@ -51,8 +80,10 @@ const prepare = (
     )
   }
 
-  const version = nextRelease?.version
-  if (!version) {
+  const version = formatExtensionVersion(nextRelease?.version)
+  const versionName = nextRelease?.version
+
+  if (!version || !versionName) {
     throw new SemanticReleaseError(
       'Could not determine the version from semantic release.',
     )
@@ -70,6 +101,7 @@ const prepare = (
   prepareManifest(
     manifestPath || `${normalizedDistFolder}/manifest.json`,
     version,
+    versionName,
     logger,
   )
   zipFolder(compiledAssetString, normalizedDistFolder, logger)
